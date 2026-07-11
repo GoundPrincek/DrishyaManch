@@ -1,0 +1,20 @@
+{
+  "name": "js_practice",
+  "version": "1.0.0",
+  "description": "js practice",
+  "homepage": "https://github.com/GoundPrincek/Project_Java_Script#readme",
+  "bugs": {
+    "url": "https://github.com/GoundPrincek/Project_Java_Script/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoundPrincek/Project_Java_Script.git"
+  },
+  "license": "ISC",
+  "author": "Gound Prince k.",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
