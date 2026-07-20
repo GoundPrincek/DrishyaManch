@@ -22,11 +22,16 @@
     "prettier": "^3.9.5"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.5.0",
-    "mongoose": "^9.7.4"
+    "mongoose": "^9.7.4",
+    "mongoose-paginate-v2": "^1.9.5",
+    "npm": "^11.18.0"
   }
 }
