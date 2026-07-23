@@ -18,7 +18,7 @@ const connectDB = async () => {
         console.log(`\nMongoDB connected !! DB HOST : ${mongoose.connection.host}`);
         return true;
     } catch (error) {
-        console.warn('MONGODB connection failed. Continuing without database.', error.message);
+        console.error('MONGODB connection failed:', error);
         return false;
     }
 };

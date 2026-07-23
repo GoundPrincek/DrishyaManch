@@ -1,18 +1,12 @@
-
-import express from 'express';
 import dotenv from 'dotenv';
+import { app } from './app.js';
 import connectDB from './db/index.js';
 
 dotenv.config({
     path: './.env',
 });
 
-const app = express();
 const PORT = process.env.PORT || 8000;
-
-app.get('/', (req, res) => {
-    res.json({ message: 'Server is running' });
-});
 
 const startServer = async () => {
     const dbConnected = await connectDB();
@@ -27,18 +21,9 @@ const startServer = async () => {
     });
 };
 
-startServer()
-.then(() => {
-    app.listen(Process.env.PORT|| 8000, () => {
-        console.log(`server is running at port : $
-            {process.env.PORT}`)
-    })
-})
-
-.catch((error) => {
-    console.log('Mongo db is connectio is failed !!!', error );
-
-})
+startServer().catch((error) => {
+    console.error('Failed to start server:', error);
+});
 
 
 
