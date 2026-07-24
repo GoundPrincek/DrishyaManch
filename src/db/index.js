@@ -12,7 +12,7 @@ const connectDB = async () => {
 
         await mongoose.connect(mongoUrl, {
             dbName: DB_NAME,
-            serverSelectionTimeoutMS: 10000,
+            serverSelectionTimeoutMS:10000,
         });
 
         console.log(`\nMongoDB connected !! DB HOST : ${mongoose.connection.host}`);

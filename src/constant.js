@@ -1,2 +1,2 @@
-export const DB_NAME = "js_practice";
+export const DB_NAME = "prince";
 
