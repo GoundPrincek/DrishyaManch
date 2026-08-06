@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { DB_NAME } from '../constant.js';
 
 const connectDB = async () => {
+    console.log('Mongo URL:', process.env.MONGODB_URL);
+
     try {
         const mongoUrl = process.env.MONGODB_URL;
 
