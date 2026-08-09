@@ -1,25 +1,49 @@
-# 🎬 Video Platform Backend
+# 🎬 DrishyaManch
 
-A backend-focused video platform project built with **Node.js, Express.js, MongoDB, and Mongoose**.
+> **Your Stage. Your Story.**
 
-> 🚧 **Project Status:** Backend development is approximately **60% complete**. Core backend architecture and major data models are implemented, while additional APIs, validations, security improvements, testing, and frontend integration are currently in progress.
+**DrishyaManch (दृश्य मंच)** is a video-sharing and content platform currently under active development.
+
+The project is designed around a simple idea: **a digital stage where creators can share visual content and viewers can watch, interact, and build their own content experience.**
+
+The backend is being developed using **Node.js, Express.js, MongoDB, and Mongoose**, with a modular REST API architecture.
+
+> 🚧 **Current Status: Backend ~60% Complete**
+>
+> Core backend architecture, database connectivity, and major data models are in place. Remaining APIs, validation, security improvements, testing, and frontend integration are currently under development.
 
 ---
 
-## 📌 About the Project
+## ✨ Project Concept
 
-This project is being developed as a full-stack video platform with functionality around:
+DrishyaManch brings together **creators, viewers, and the community** through a single video-sharing platform.
 
-- User authentication and account management
-- Video upload and management
-- Video viewing and watch history
-- Comments and likes
-- Playlists
-- Subscriptions between users/channels
-- Tweets/posts
-- REST API based backend architecture
+### Core Platform Architecture
 
-The backend is being developed with a modular structure so that new features can be added without affecting existing functionality.
+```text
+                DrishyaManch
+                     │
+    ┌────────────────┼────────────────┐
+    ↓                ↓                ↓
+ Creators          Viewers         Community
+    │                │                │
+ Upload             Watch          Comments
+ Videos             Search         Likes
+ Channels           Feed           Posts
+    │                │                │
+    └────────────────┼────────────────┘
+                     ↓
+                Recommendations
+```
+
+The platform is being designed around three major experiences:
+
+- **Creators** — upload videos and manage their channels.
+- **Viewers** — discover, watch, search, and organize content.
+- **Community** — interact through comments, likes, posts, and subscriptions.
+- **Recommendations** — connect users with relevant content based on their activity and interests.
+
+The goal is to build a scalable backend foundation that can support a complete video-sharing and creator ecosystem.
 
 ---
 
@@ -28,67 +52,75 @@ The backend is being developed with a modular structure so that new features can
 | Technology | Purpose |
 |---|---|
 | **Node.js** | JavaScript runtime |
-| **Express.js** | REST API and server framework |
-| **MongoDB** | Database |
+| **Express.js** | REST API and backend framework |
+| **MongoDB** | NoSQL database |
 | **Mongoose** | MongoDB ODM and schema modeling |
 | **JWT** | Authentication and authorization |
 | **bcrypt** | Password hashing |
 | **dotenv** | Environment configuration |
-| **Nodemon** | Development-time server restart |
+| **Nodemon** | Development server workflow |
 
 ---
 
-## 🗄️ Database Design
+## 🗄️ Database Architecture
 
-The current database design contains the major entities required for the platform.
+The database is designed around the core relationships between users, videos, comments, likes, playlists, subscriptions, and tweets/posts.
 
 ### ER Diagram
 
 <p align="center">
-  <img src="./assets/database-erd.png" alt="Video Platform Database ER Diagram" width="900">
+  <img src="assets/database-erd.png" alt="DrishyaManch Database ER Diagram" width="900">
 </p>
 
-### Main Collections
+### Main Entities
 
-- **Users** — user accounts, profiles, authentication data, and watch history
-- **Videos** — video metadata, ownership, views, publishing status, and media references
-- **Comments** — comments associated with videos and users
-- **Likes** — likes associated with videos/comments and users
-- **Playlists** — user-created video collections
-- **Subscriptions** — subscriber/channel relationships
-- **Tweets** — user-created short-form posts
+- **Users** — accounts, profiles, authentication information, and user activity
+- **Videos** — video metadata, ownership, views, publishing information, and media references
+- **Comments** — user comments associated with videos
+- **Likes** — user interactions with videos/comments
+- **Playlists** — collections of videos created by users
+- **Subscriptions** — relationships between subscribers and creators/channels
+- **Tweets** — short-form posts and creator/user updates
 
-The ERD will continue to evolve as the backend requirements are refined.
+> The database design is still evolving as new backend requirements are implemented.
 
 ---
 
 ## 📊 Current Development Status
 
-| Area | Status |
+| Module | Status |
 |---|---|
-| Project structure | ✅ Completed |
-| Database connection | ✅ Completed |
-| Core Mongoose models | ✅ Mostly completed |
-| User module | ✅ Implemented |
+| Project setup | ✅ Completed |
+| Express server | ✅ Completed |
+| MongoDB connection | ✅ Completed |
+| Database architecture | ✅ Mostly completed |
+| Mongoose models | ✅ Mostly completed |
+| User module | 🟡 In progress |
+| Authentication & authorization | 🟡 In progress |
 | Video module | 🟡 In progress |
-| Comments & likes | 🟡 In progress |
+| Comments | 🟡 In progress |
+| Likes | 🟡 In progress |
 | Playlists | 🟡 In progress |
 | Subscriptions | 🟡 In progress |
-| Tweets | 🟡 In progress |
-| Authentication & authorization | 🟡 In progress |
-| API validation & error handling | 🟡 In progress |
-| Testing | 🔴 Upcoming |
+| Tweets / posts | 🟡 In progress |
+| Validation & error handling | 🟡 In progress |
+| API testing | 🔴 Upcoming |
 | Frontend integration | 🔴 Upcoming |
 | Deployment | 🔴 Upcoming |
 
-**Overall backend progress: ~60%**
+### Overall Progress
+
+**Backend: ~60% 🟡**
+
+Development is actively continuing.
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-project/
+DrishyaManch/
+│
 ├── src/
 │   ├── controllers/
 │   ├── db/
@@ -100,19 +132,22 @@ project/
 │   └── index.js
 │
 ├── public/
+│
+├── assets/
+│
 ├── .env
 ├── .gitignore
 ├── package.json
 └── README.md
 ```
 
-> The exact folder structure may continue to change as development progresses.
+The structure may evolve as additional modules are implemented.
 
 ---
 
-## 🔐 Environment Variables
+## 🔐 Environment Configuration
 
-Create a `.env` file in the project root and configure the required environment variables.
+Create a `.env` file in the project root.
 
 ```env
 PORT=8000
@@ -122,17 +157,17 @@ ACCESS_TOKEN_SECRET=your_access_token_secret
 REFRESH_TOKEN_SECRET=your_refresh_token_secret
 ```
 
-Never commit real secrets or `.env` files to GitHub.
+**Never commit real credentials or secrets to GitHub.**
 
 ---
 
-## ▶️ Running the Project
+## 🚀 Getting Started
 
 ### 1. Clone the repository
 
 ```bash
 git clone <repository-url>
-cd <project-folder>
+cd DrishyaManch
 ```
 
 ### 2. Install dependencies
@@ -143,15 +178,15 @@ npm install
 
 ### 3. Configure environment variables
 
-Create the `.env` file and add the required values.
+Create `.env` and add the required configuration.
 
-### 4. Start development server
+### 4. Start the development server
 
 ```bash
 npm run dev
 ```
 
-The backend will run on the configured port, for example:
+The backend will run on the configured port:
 
 ```text
 http://localhost:8000
@@ -159,11 +194,9 @@ http://localhost:8000
 
 ---
 
-## 🔌 API Development
+## 🔌 Planned API Modules
 
-The backend follows a REST API architecture.
-
-The planned API modules include:
+The backend follows a modular REST API architecture.
 
 ```text
 /api/users
@@ -175,13 +208,13 @@ The planned API modules include:
 /api/tweets
 ```
 
-Routes and controllers are being developed incrementally as the project progresses.
+These modules are being implemented and tested incrementally.
 
 ---
 
 ## 🧪 Testing
 
-API testing will be performed using tools such as **Postman** while the remaining backend modules are completed.
+API testing is being performed during backend development using tools such as **Postman**.
 
 Testing will cover:
 
@@ -189,75 +222,86 @@ Testing will cover:
 - Authorization
 - CRUD operations
 - Request validation
-- Error handling
-- Database operations
 - Protected routes
-- File/media handling
+- Database operations
+- Error handling
+- Media/file handling
+
+A more complete automated testing layer is planned after the core API modules are stabilized.
 
 ---
 
-## 🚀 Roadmap
+## 🗺️ Roadmap
 
 ### Phase 1 — Backend Foundation
+
 - [x] Project initialization
 - [x] Express server setup
 - [x] MongoDB/Mongoose integration
 - [x] Initial database architecture
-- [x] Core models
+- [x] Core data models
 
-### Phase 2 — Core Backend APIs
-- [x] User management foundation
+### Phase 2 — Core APIs
+
+- [x] Initial user module
 - [ ] Complete authentication flow
 - [ ] Video APIs
 - [ ] Comment APIs
 - [ ] Like APIs
 - [ ] Playlist APIs
 - [ ] Subscription APIs
-- [ ] Tweet APIs
+- [ ] Tweet/post APIs
 
-### Phase 3 — Backend Improvements
-- [ ] Complete validation
+### Phase 3 — Backend Hardening
+
+- [ ] Complete request validation
 - [ ] Centralized error handling
-- [ ] Authentication/security hardening
+- [ ] Authentication/security improvements
 - [ ] API testing
 - [ ] Performance optimization
 - [ ] API documentation
 
-### Phase 4 — Full-Stack Integration
+### Phase 4 — Frontend Integration
+
 - [ ] Frontend development
 - [ ] Backend/frontend integration
 - [ ] Media upload integration
 - [ ] Complete user workflows
 - [ ] End-to-end testing
 
-### Phase 5 — Deployment
+### Phase 5 — Production
+
 - [ ] Production configuration
 - [ ] Database deployment
 - [ ] Backend deployment
 - [ ] Frontend deployment
-- [ ] Monitoring and final optimization
+- [ ] Monitoring
+- [ ] Final performance optimization
 
 ---
 
-## 📈 Development Philosophy
+## 🎯 Project Vision
 
-The project is being developed incrementally rather than building every feature at once.
+DrishyaManch is being built with the long-term goal of becoming a complete platform for:
 
-The current priority is to establish a **stable, scalable backend foundation** first. Once the remaining backend modules are completed and tested, frontend integration and deployment will follow.
+**Create → Upload → Discover → Watch → Interact → Connect**
+
+The current priority is to finish and stabilize the backend before moving into full frontend integration.
 
 ---
 
-## 📍 Current Status
+## 📌 Development Status
 
-**Backend: 60% Complete 🟡**
+> **DrishyaManch is currently under active development.**
 
-Development is actively in progress. The database architecture and core backend foundation are in place, while the remaining APIs, security, testing, and integration work are being developed.
+The backend is approximately **60% complete**. Database architecture and core backend foundations are established, while remaining APIs, security, validation, testing, and integration work are actively being developed.
+
+Features and architecture may change as the project progresses.
 
 ---
 
 ## 👨‍💻 Development
 
-This repository is currently under active development.
+Built as an ongoing full-stack development project with the backend being developed first to establish a stable and scalable foundation.
 
-Features, API structures, database relationships, and project architecture may change as development continues.
-
+**DrishyaManch — Your Stage. Your Story.**
