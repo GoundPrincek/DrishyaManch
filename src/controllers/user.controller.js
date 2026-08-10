@@ -1,7 +1,7 @@
 import { AsyncHandler } from '../utils/AsyncHandler.js';
 import {ApiError} from "../utils/ApiErrors.js"
 import {User} from "../models/user.model.js"
-import {uploadOnClodinary} from "../utils/cloudinary.js"
+import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from '../utils/ApiRespose.js';
 
 const registerUser = AsyncHandler(async (req, res) => {
@@ -26,23 +26,27 @@ const registerUser = AsyncHandler(async (req, res) => {
             throw new ApiError (400, "All Fields are required")
         }
 
-        const existedUser = User.findOne({
-            $or:[{ Username }, { email }]
+        const existedUser = await User.findOne({
+            $or:[{ username }, { email }]
         })
 
         if (existedUser){
-            throw new ApiError(409, "User with email or Username already exists")
+            throw new ApiError(409, "User with email or username already exists")
         }
 
-       const avatarLocalPath = req.files?.avatar[0]?.path;
-       const coverimageLocalPath = req.files?.coverImage[0]?.path;
+       const avatarLocalPath = req.files?.avatar?.[0]?.path;
+       const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
 
-        if (!avatarLocalPah){
-            throw new ApiError (400, " Avatar file is required")
+        if (!avatarLocalPath){
+            throw new ApiError (400, "Avatar file is required")
         }
 
-       const avatar = await uploadOnClodinary(avatarLocalPath)
-       const coveImage = await uploadOnClodinary(coverImageLocalPath)
+        if (!coverImageLocalPath){
+            throw new ApiError (400, "Cover image file is required")
+        }
+
+       const avatar = await uploadOnCloudinary(avatarLocalPath)
+       const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
        if (!avatar){
         throw new ApiError(400, "Avatar is required")
@@ -51,7 +55,7 @@ const registerUser = AsyncHandler(async (req, res) => {
        const user = await User.create({
         fullName,
         avatar: avatar.url,
-        coverImage:coverImage?.url || "",
+        coverImage: coverImage?.url || "",
         email,
         password,
         username:username.toLowerCase()
