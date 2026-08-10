@@ -69,7 +69,8 @@ The database is designed around the core relationships between users, videos, co
 ### ER Diagram
 
 <p align="center">
-  <img src="assets/database-erd.png" alt="DrishyaManch Database ER Diagram" width="900">
+  <img src="![Uploading ChatGPT Image Aug 10, 2026, 11_38_18 AM.png…]()
+" alt="DrishyaManch Database ER Diagram" width="900">
 </p>
 
 ### Main Entities
