@@ -305,4 +305,8 @@ Features and architecture may change as the project progresses.
 
 Built as an ongoing full-stack development project with the backend being developed first to establish a stable and scalable foundation.
 
+<<<<<<< HEAD
 **DrishyaManch — Your Stage. Your Story.**
+=======
+**DrishyaManch — Your Stage. Your Story.**
+>>>>>>> 965e91cb828c9cbb410e3e705cb3a500061fc625
