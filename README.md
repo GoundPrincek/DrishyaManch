@@ -70,7 +70,7 @@ The database is designed around the core relationships between users, videos, co
 
 <p align="center">
   <img src="![Uploading ChatGPT Image Aug 10, 2026, 11_38_18 AM.png…]()
-" alt="DrishyaManch Database ER Diagram" width="900">
+    " alt="DrishyaManch Database ER Diagram" width="900">
 </p>
 
 ### Main Entities
@@ -167,7 +167,7 @@ REFRESH_TOKEN_SECRET=your_refresh_token_secret
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/GoundPrincek/DrishyaManch
 cd DrishyaManch
 ```
 
