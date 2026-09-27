@@ -4,25 +4,17 @@ import { DB_NAME } from '../constant.js';
 const connectDB = async () => {
     console.log('Mongo URL:', process.env.MONGODB_URL);
 
-    try {
-        const mongoUrl = process.env.MONGODB_URL;
-
-        if (!mongoUrl) {
-            console.warn('MONGODB_URL is not set. Skipping database connection.');
-            return false;
-        }
-
-        await mongoose.connect(mongoUrl, {
-            dbName: DB_NAME,
-            serverSelectionTimeoutMS:10000,
-        });
-
-        console.log(`\nMongoDB connected !! DB HOST : ${mongoose.connection.host}`);
-        return true;
-    } catch (error) {
-        console.error('MONGODB connection failed:', error);
-        return false;
+    const mongoUrl = process.env.MONGODB_URL;
+    if (!mongoUrl) {
+        throw new Error('MONGODB_URL is not set');
     }
+
+    await mongoose.connect(mongoUrl, {
+        dbName: DB_NAME,
+        serverSelectionTimeoutMS: 10000,
+    });
+
+    console.log(`\nMongoDB connected !! DB HOST : ${mongoose.connection.host}`);
 };
 
 export default connectDB;

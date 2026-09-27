@@ -9,22 +9,17 @@ dotenv.config({
 const PORT = process.env.PORT || 8000;
 
 const startServer = async () => {
-    const dbConnected = await connectDB();
+    await connectDB();
 
     const server = app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-    console.log(server.address());
-
-    if (dbConnected) {
+        console.log(`Server is listening on port ${PORT}`);
+        console.log(server.address());
         console.log("Database connection ready.");
-    } else {
-        console.warn("Server started without a database connection.");
-    }
-});
+    });
 
-process.on("exit", (code) => {
-    console.log("Node exited with code:", code);
-});
+    process.on("exit", (code) => {
+        console.log("Node exited with code:", code);
+    });
 
 process.on("uncaughtException", (err) => {
     console.error("Uncaught Exception:", err);
