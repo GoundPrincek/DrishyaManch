@@ -3,6 +3,23 @@ import {ApiError} from "../utils/ApiErrors.js"
 import {User} from "../models/user.model.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from '../utils/ApiRespose.js';
+import { access } from 'fs';
+
+const genrateAccessAndRefereshToken =async(userId)=>{
+    try{
+        const user = await User.findById(userId)
+        const acessToken = user.generateAccessToken
+        const refreshToken = user.generateRefreshToken
+
+        user.refreshToken = refreshToken
+        await user.save({validateBeforeSave : false
+        })
+        return {acessToken , refreshToken}
+
+    }catch(error){
+        throw new ApiError(500,"Something went wrong while generating refresh and acess token")
+    }
+}
 
 const registerUser = AsyncHandler(async (req, res) => {
         //get user details from frontend
@@ -101,9 +118,13 @@ const loginUser =AsyncHandler(async (req , res) => {
      const ispasswordValid = await user.ispasswordCorrect(password)
 
   if(!ispasswordValid){
-        throw new ApiError(404,"User doesnot found")
+        throw new ApiError(401,"Invalid user cradential")
      }
 
+    const {accessToken , refreshToken} =await 
+    genrateAccessAndRefereshToken(user._id)
+
+    
 })
 
 
